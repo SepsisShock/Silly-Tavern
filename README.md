@@ -1,6 +1,6 @@
 FOR CHAT COMPLETION, NOT TEXT COMPLETION.
 
-This preset is meant for Deepseek V3 0324 (not regular V3.) Deepinfra via Open Router.
+This preset is meant for Deepseek V3 0324 (not regular V3.) Deepinfra via Open Router. I have heard V5 works okay for direct Deepseek API, but set temperature to .30.
 
 DO NOT USE FOR R1 OR VIA DIRECT API. You can, but it will probably act absolutely psychotic.
 
