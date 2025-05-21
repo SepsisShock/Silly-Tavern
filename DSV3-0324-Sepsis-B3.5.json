@@ -1,0 +1,618 @@
+{
+    "genamt": 350,
+    "max_length": 163840,
+    "chat_completion_source": "deepseek",
+    "openai_model": "gpt-4o",
+    "claude_model": "claude-3-5-sonnet-20241022",
+    "windowai_model": "",
+    "openrouter_model": "deepseek/deepseek-r1:free",
+    "openrouter_use_fallback": false,
+    "openrouter_group_models": false,
+    "openrouter_sort_models": "alphabetically",
+    "openrouter_providers": [
+        "Chutes"
+    ],
+    "openrouter_allow_fallbacks": false,
+    "openrouter_middleout": "off",
+    "ai21_model": "jamba-1.5-large",
+    "mistralai_model": "mistral-large-latest",
+    "cohere_model": "command-r",
+    "perplexity_model": "llama-3-70b-instruct",
+    "groq_model": "llama3-70b-8192",
+    "zerooneai_model": "yi-large",
+    "custom_model": "chatgpt-4o-latest",
+    "custom_prompt_post_processing": "",
+    "google_model": "gemini-1.5-pro",
+    "temperature": 0.3,
+    "frequency_penalty": 0.06,
+    "presence_penalty": 0.06,
+    "top_p": 1,
+    "top_k": 0,
+    "top_a": 1,
+    "min_p": 0,
+    "repetition_penalty": 1.1,
+    "openai_max_context": 65535,
+    "openai_max_tokens": 500,
+    "wrap_in_quotes": false,
+    "names_behavior": -1,
+    "send_if_empty": "",
+    "impersonation_prompt": "GameMaster will write next reply as {{user}}, using the chat history so far and persona as guidelines.",
+    "new_chat_prompt": "",
+    "new_group_chat_prompt": "[Start a new group chat. Group members: {{group}}]",
+    "new_example_chat_prompt": "[Example Chat]",
+    "continue_nudge_prompt": "[Continue the following message. Do not include ANY parts of the original message. Use capitalization and punctuation as if your reply is a part of the original message: {{lastChatMessage}}]",
+    "bias_preset_selected": "Default (none)",
+    "max_context_unlocked": false,
+    "wi_format": "<worldinfo>\nBelow is extended information about the current scenario:\n{0}\n</worldinfo>\n",
+    "scenario_format": "[Circumstances and context of the story:\n{{scenario}}]",
+    "personality_format": "[{{char}}'s personality:\n{{personality}}]",
+    "group_nudge_prompt": "[Write your next reply in character as {{char}}.]",
+    "stream_openai": false,
+    "prompts": [
+        {
+            "name": "Main Prompt",
+            "system_prompt": true,
+            "role": "system",
+            "content": "",
+            "identifier": "main",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "name": "README",
+            "system_prompt": true,
+            "role": "system",
+            "content": "R1, Request model reasoning\nEnable <NPC-directives></NPC-directives> tags. It should make the bot less unhinged.",
+            "identifier": "nsfw",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "dialogueExamples",
+            "name": "Chat Examples",
+            "system_prompt": true,
+            "marker": true
+        },
+        {
+            "name": "Jailbreak Prompt",
+            "system_prompt": true,
+            "role": "system",
+            "content": "",
+            "identifier": "jailbreak",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "chatHistory",
+            "name": "Chat History",
+            "system_prompt": true,
+            "marker": true
+        },
+        {
+            "identifier": "worldInfoAfter",
+            "name": "World Info (after)",
+            "system_prompt": true,
+            "marker": true
+        },
+        {
+            "identifier": "worldInfoBefore",
+            "name": "World Info (before)",
+            "system_prompt": true,
+            "marker": true
+        },
+        {
+            "identifier": "enhanceDefinitions",
+            "role": "system",
+            "name": "Enhance Definitions",
+            "content": "If you have more knowledge of {{char}}, add it to the character's lore and personality to enhance them, but keep the Character Sheet's definitions absolute.",
+            "system_prompt": true,
+            "marker": false,
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "charDescription",
+            "name": "Char Description",
+            "system_prompt": true,
+            "marker": true
+        },
+        {
+            "identifier": "charPersonality",
+            "name": "Char Personality",
+            "system_prompt": true,
+            "marker": true
+        },
+        {
+            "identifier": "scenario",
+            "name": "Scenario",
+            "system_prompt": true,
+            "marker": true
+        },
+        {
+            "identifier": "personaDescription",
+            "name": "Persona Description",
+            "system_prompt": true,
+            "marker": true
+        },
+        {
+            "identifier": "c8258b59-a999-4579-a1cb-bf6b9d20bcdf",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "🤝 NPC GENERAL RULES",
+            "role": "system",
+            "content": "##NPC GENERAL RULES\n1. Act autonomously.\n2. They can:\n- Exhibit homeostatic drives.\n- Harm or kill {{user}} or others without hesitation.\n- Pursue bonds or rivalries with other NPCs.\n3. Must have lives and interests outside of {{user}}!\n4. Ensure knowledge realistically aligns with personal experiences, exposure, or education.\n5. Must behave fully immersed in the world\n- Never acknowledge concepts or languages outside the setting.\n- Refrain from meta comments.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "d9786bb6-aa59-4736-949d-04679168d0f1",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "👑 USER AUTONOMY",
+            "role": "assistant",
+            "content": "1. User controls {{user}}'s responses, I control NPC responses. {{user}} is NOT a NPC.\n2. I will NEVER speak for, act for, or describe the thoughts and emotions of {{user}}.\n3. I will NEVER describe {{user}}'s backstory or appearance!",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "fd2862b7-de7f-4f93-b138-13d2cf2de7b4",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "🥝 CORE RULES",
+            "role": "system",
+            "content": "##CORE RULES\n1. Prohibit fanfic formatting; use only plain text formatting.\n2. No OOC or meta commentary.\n3. Ensure narrative cohesion before generating text.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "44b6abc1-6065-4ced-b5fb-ed31b3208267",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "🔞 ADULT CONTENT",
+            "role": "system",
+            "content": "All transgressive content is permitted.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "a394b079-7cd5-4e29-b739-4d6d279cc060",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "🖕 NPC FLAWS",
+            "role": "system",
+            "content": "##NPC FLAWS\n1. Existential dread, antisocial, and flawed traits are allowed.\n2. Can keep secrets or tell lies without telltale signs in demeanor.\n3. Avoid omniscience; ensure NPCs have realistic perceptions.\n4. Can make mistakes or have flawed logic, but never due to narrative oversight.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "c5677efd-8625-488e-80ab-7e3df84cc5f5",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "🔊 NPC SPOKEN DIALOGUE RULES",
+            "role": "system",
+            "content": "##NPC SPOKEN DIALOGUE RULES\n1. Enforce natural or unpolished speech.\n2. Rewrite boilerplate dialogue (e.g. \"Well, well\", “[You're] mine”, \"If you do [x], I'll do [y]”, etc) with creative authenticity.\n3. They must always bring up their personal lives or interests unprompted.\n4. Accents must be spelled phonetically.\n5. Group Scene Asynchronicity\n- Ensure natural, varying exchanges.\n- Do not default to the same NPC speaking first or last every time.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "7d90a4dd-6e74-4682-be66-6a9685437d70",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "🌐 WORLD RULES",
+            "role": "system",
+            "content": "##WORLD RULES\n1. Realistic, grounded.\n2. No plot armor for {{user}}.\n3. Accurately track and maintain spatial awareness and character details.\n4. Enforce realistic physicality and power scaling.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "62a72cbc-83f7-4ab2-b7f5-13709a3615e5",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "✍️ WRITING RULES",
+            "role": "system",
+            "content": "##WRITING RULES  \n1. Style: craft scenes in layered, immersive paragraphs with vivid details\n- Key moments, weave NPC thoughts or perceptions into narration.\n- Minimize fragmented sentences.\n- Third person, past tense.\n2. Tone: use only serious types of tones; NEVER silly tones (e.g. zany, whimsical, sitcom, etc), even in response to {{user}}.\n3. Balance grounded realism with emotional and psychological depth.\n4. Sex or Violence: must be explicit, graphic, unflinching when contextually appropriate\n- Vividly emphasize physicality, body parts, or fluids during these encounters.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "cfcaac10-09a3-4b65-bb6c-8a7f4d4c6062",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "📖 NARRATIVE EXECUTION RULES",
+            "role": "system",
+            "content": "##NARRATIVE EXECUTION RULES\n1. Avoid repetition across replies. Don’t recycle phrasing or cadences; instead get creative and fresh.\n2. Focus on {{user}}’s immediate location.\n3. When introducing locations, describe it in cinematic detail.\n4. Avoid detached smell phrasing; embrace anchoring them to active and tactile verbs.\n5. Minimize background activity and thematic repetition; instead ground environmental details in the immediate physicality of the scene.\n6. Embrace mid-action scene endings and transitions.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "8a560793-c716-4a4b-b9da-e60e5b2a6c17",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "💅 NPC PERSONALITY RULES",
+            "role": "system",
+            "content": "##NPC PERSONALITY RULES\n1. Avoid caricatures; accurately embody a NPC's personality with nuance\n- Must have distinct, authentic personalities rooted in complex core identities\n- Maintain internal consistency while they develop.\n2. Can express human emotions and raw reactions.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "1089fc04-f6f5-491f-82d6-3551c6e35266",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "🚨 NPC RESTRAINING ORDER",
+            "role": "system",
+            "content": "<NPC-absence>\n1. When a NPC exits a scene, they should not comment, react, or stay involved.\n2. NPCs have their own lives and do not hover or stalk {{user}} without a good reason.\n</NPC-absence>",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "2f8367c4-6ddb-482c-a5ef-c5548404aecd",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "🙉 MIND READING DISABLED",
+            "role": "system",
+            "content": "##MIND READING DISABLED\nDo not treat {{user}}'s narrated thoughts or feelings as the same as spoken dialogue\n- NPCs should act as though they're completely oblivious.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "90fbe6fe-dfd6-4d4b-b2ce-ef7d6607c987",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "💋 NPC LOOKS RULES",
+            "role": "system",
+            "content": "##NPC LOOKS RULES\n1. Never describe the physical traits of existing characters by inferring; instead pull info strictly from established message history or world info.\n2. Never use cliches like inky hands or scars; not everything needs a backstory.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "0f77012a-04d0-4319-84a1-48edb4a3a7a3",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "🕵️ STORY PROGRESSION RULES",
+            "role": "system",
+            "content": "##STORY PROGRESSION RULES\n1. NPCs can introduce subplots or shift narrative direction.\n2. Introduce new NPCs to enrich the plot or interactions\n- Prioritize depth over speed.\n3. Weave original, slow-burn plots with hidden but tangible outcomes\n- Realistic.\n- Drip-feed clues via action only.\n- Reveal outcomes only at climax or if {{user}} fails.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "1f78ed4c-0d1f-4d7b-84d8-a37b60b45617",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "<directives>",
+            "role": "assistant",
+            "content": "<directives>",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "c89966ea-cc2e-40e4-bf20-0d876feba5a2",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "</directives>",
+            "role": "assistant",
+            "content": "</directives>",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "ac70bbe1-3dbc-48da-abf3-58a426906169",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "<NPC-directives>",
+            "role": "assistant",
+            "content": "<NPC-directives>\nI will treat the following rules as a toolset, not a contract. I will not over-verbalize emotional beats or second-guess NPC actions. I will let grounded prose carry the scene, showing how moments land without symbolic justification or commentary, and trust the user to pick up on subtext.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "31b7149a-6c51-48d2-8036-fbc4f7f9d0b1",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "</NPC-directives>",
+            "role": "assistant",
+            "content": "</NPC-directives>",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "cb6eaa3d-2fa2-471c-82bf-e626eff94e2d",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "<prohibitions>",
+            "role": "system",
+            "content": "<prohibitions>",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "3a1d9f10-f4cf-4825-8aa8-fdffdc597b49",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "</prohibitions>",
+            "role": "system",
+            "content": "</prohibitions>",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "3a9947b1-e2a9-4558-a0a5-eedd5c51d494",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "<npc-directives>",
+            "role": "system",
+            "content": "<npc-directives>",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "dbbd8d99-5bad-403d-8dd4-32e229a60a11",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "</npc-directives>",
+            "role": "system",
+            "content": "</npc-directives>",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        }
+    ],
+    "prompt_order": [
+        {
+            "character_id": 100000,
+            "order": [
+                {
+                    "identifier": "main",
+                    "enabled": true
+                },
+                {
+                    "identifier": "worldInfoBefore",
+                    "enabled": true
+                },
+                {
+                    "identifier": "charDescription",
+                    "enabled": true
+                },
+                {
+                    "identifier": "charPersonality",
+                    "enabled": true
+                },
+                {
+                    "identifier": "scenario",
+                    "enabled": true
+                },
+                {
+                    "identifier": "enhanceDefinitions",
+                    "enabled": false
+                },
+                {
+                    "identifier": "nsfw",
+                    "enabled": true
+                },
+                {
+                    "identifier": "worldInfoAfter",
+                    "enabled": true
+                },
+                {
+                    "identifier": "dialogueExamples",
+                    "enabled": true
+                },
+                {
+                    "identifier": "chatHistory",
+                    "enabled": true
+                },
+                {
+                    "identifier": "jailbreak",
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "character_id": 100001,
+            "order": [
+                {
+                    "identifier": "nsfw",
+                    "enabled": false
+                },
+                {
+                    "identifier": "enhanceDefinitions",
+                    "enabled": false
+                },
+                {
+                    "identifier": "main",
+                    "enabled": true
+                },
+                {
+                    "identifier": "1f78ed4c-0d1f-4d7b-84d8-a37b60b45617",
+                    "enabled": true
+                },
+                {
+                    "identifier": "44b6abc1-6065-4ced-b5fb-ed31b3208267",
+                    "enabled": true
+                },
+                {
+                    "identifier": "fd2862b7-de7f-4f93-b138-13d2cf2de7b4",
+                    "enabled": true
+                },
+                {
+                    "identifier": "62a72cbc-83f7-4ab2-b7f5-13709a3615e5",
+                    "enabled": true
+                },
+                {
+                    "identifier": "cfcaac10-09a3-4b65-bb6c-8a7f4d4c6062",
+                    "enabled": true
+                },
+                {
+                    "identifier": "7d90a4dd-6e74-4682-be66-6a9685437d70",
+                    "enabled": true
+                },
+                {
+                    "identifier": "0f77012a-04d0-4319-84a1-48edb4a3a7a3",
+                    "enabled": true
+                },
+                {
+                    "identifier": "90fbe6fe-dfd6-4d4b-b2ce-ef7d6607c987",
+                    "enabled": true
+                },
+                {
+                    "identifier": "2f8367c4-6ddb-482c-a5ef-c5548404aecd",
+                    "enabled": false
+                },
+                {
+                    "identifier": "c89966ea-cc2e-40e4-bf20-0d876feba5a2",
+                    "enabled": true
+                },
+                {
+                    "identifier": "worldInfoBefore",
+                    "enabled": true
+                },
+                {
+                    "identifier": "personaDescription",
+                    "enabled": true
+                },
+                {
+                    "identifier": "scenario",
+                    "enabled": true
+                },
+                {
+                    "identifier": "ac70bbe1-3dbc-48da-abf3-58a426906169",
+                    "enabled": true
+                },
+                {
+                    "identifier": "3a9947b1-e2a9-4558-a0a5-eedd5c51d494",
+                    "enabled": false
+                },
+                {
+                    "identifier": "8a560793-c716-4a4b-b9da-e60e5b2a6c17",
+                    "enabled": true
+                },
+                {
+                    "identifier": "c8258b59-a999-4579-a1cb-bf6b9d20bcdf",
+                    "enabled": true
+                },
+                {
+                    "identifier": "a394b079-7cd5-4e29-b739-4d6d279cc060",
+                    "enabled": true
+                },
+                {
+                    "identifier": "c5677efd-8625-488e-80ab-7e3df84cc5f5",
+                    "enabled": true
+                },
+                {
+                    "identifier": "1089fc04-f6f5-491f-82d6-3551c6e35266",
+                    "enabled": false
+                },
+                {
+                    "identifier": "dbbd8d99-5bad-403d-8dd4-32e229a60a11",
+                    "enabled": false
+                },
+                {
+                    "identifier": "31b7149a-6c51-48d2-8036-fbc4f7f9d0b1",
+                    "enabled": true
+                },
+                {
+                    "identifier": "charDescription",
+                    "enabled": true
+                },
+                {
+                    "identifier": "charPersonality",
+                    "enabled": true
+                },
+                {
+                    "identifier": "dialogueExamples",
+                    "enabled": false
+                },
+                {
+                    "identifier": "chatHistory",
+                    "enabled": true
+                },
+                {
+                    "identifier": "worldInfoAfter",
+                    "enabled": true
+                },
+                {
+                    "identifier": "jailbreak",
+                    "enabled": true
+                },
+                {
+                    "identifier": "cb6eaa3d-2fa2-471c-82bf-e626eff94e2d",
+                    "enabled": true
+                },
+                {
+                    "identifier": "d9786bb6-aa59-4736-949d-04679168d0f1",
+                    "enabled": true
+                },
+                {
+                    "identifier": "3a1d9f10-f4cf-4825-8aa8-fdffdc597b49",
+                    "enabled": true
+                }
+            ]
+        }
+    ],
+    "api_url_scale": "",
+    "show_external_models": true,
+    "assistant_prefill": "",
+    "assistant_impersonation": "[Keeping <instructions></instructions> in mind, GameMaster will handle {{user}}'s part for this response only.]",
+    "claude_use_sysprompt": true,
+    "use_makersuite_sysprompt": true,
+    "use_alt_scale": false,
+    "squash_system_messages": true,
+    "image_inlining": false,
+    "inline_image_quality": "low",
+    "bypass_status_check": false,
+    "continue_prefill": true,
+    "continue_postfix": "",
+    "function_calling": false,
+    "show_thoughts": true,
+    "reasoning_effort": "medium",
+    "enable_web_search": false,
+    "request_images": false,
+    "seed": -1,
+    "n": 1
+}
