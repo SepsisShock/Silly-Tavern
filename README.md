@@ -1,4 +1,4 @@
-**FOR CHAT COMPLETION**, NOT TEXT COMPLETION. All the ones with a **"B" at the end are the hybrid R1/0324 presets**.
+**FOR CHAT COMPLETION**, NOT TEXT COMPLETION. All the ones with a **"B" at the end are the hybrid R1/0324 presets**, meant for Deepseek direct API. Not sure how well they work on Open Router providers.
 
 ~~This preset is meant for Deepseek V3 0324 (not regular V3.) Deepinfra via Open Router. I have heard V5 works okay for direct Deepseek API, but set temperature to .30.~~
 
